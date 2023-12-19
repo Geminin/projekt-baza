@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "baza-67024": {
+      "hosting": {
+        "projekt-baza": [
+          "baza-67024"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "baza-67024"
+  }
+}
