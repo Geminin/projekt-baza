@@ -1,9 +1,18 @@
 import { Component } from '@angular/core';
 import { SharedService } from '../shared.service';
 
-import {MatTableModule} from '@angular/material/table';
-import {MatButtonModule} from '@angular/material/button';
+import { MatSelectModule } from '@angular/material/select';
+import { FormsModule } from '@angular/forms';
+import { MatInputModule } from '@angular/material/input';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatTableModule } from '@angular/material/table';
+import { MatButtonModule } from '@angular/material/button';
+import { MatIconModule } from '@angular/material/icon';
 import { NgFor } from '@angular/common';
+import { Router } from '@angular/router';
+import {MatExpansionModule} from '@angular/material/expansion'
+import { FormComponent } from '../form/form.component';
+
 
 @Component({
   selector: 'app-tabela',
@@ -12,37 +21,50 @@ import { NgFor } from '@angular/common';
     MatButtonModule,
     MatTableModule,
     NgFor,
+    MatInputModule,
+    MatFormFieldModule,
+    MatSelectModule,
+    FormsModule,
+    MatIconModule,
+    MatExpansionModule,
+    FormComponent,
 
   ],
   templateUrl: './tabela.component.html',
   styleUrl: './tabela.component.css'
 })
-export class TabelaComponent {
-  constructor(private service:SharedService){}
-  displayedColumns: string[] = ['id','marka','model','nr_nadwozia']
-  auta:any=[];
 
-  refreshAuta(){
-    this.service.getAuta().subscribe((res)=>{
-      this.auta=res
+export class TabelaComponent {
+  constructor(
+    private service: SharedService,
+    private router: Router) { }
+
+  displayedColumns: string[] = ['id', 'marka', 'model', 'sezon','felgi', 'DOT', 'klient', 'auto', 'ilosc', 'bieznik', 'uwagi', 'akcja',]
+  opony: any = [];
+
+
+  applyFilter(event: Event) {
+    const filterValue = (event.target as HTMLInputElement).value;
+    this.opony.filter = filterValue.trim().toLowerCase();
+  }
+
+  refreshOpony() {
+    this.service.getOpony().subscribe((res) => {
+      this.opony = res
     });
   }
 
-  ngOnInit(){
-    this.refreshAuta();
+  ngOnInit() {
+    this.refreshOpony();
   }
 
-addNotes(NewAuta:string){
-  this.service.addAuto(NewAuta).then((res)=>{
-    console.log(res);
-    this.refreshAuta();
-  });
-}
 
-  deleteNotes(id:string){
-    this.service.deleteAuta(id).then((res)=>{
+
+
+  deleteOpony(id: string) {
+    this.service.deleteOpony(id).then((res) => {
       console.log(res);
-      this.refreshAuta();
+      this.refreshOpony();
     });
   }
 }

@@ -1,0 +1,89 @@
+<form (ngSubmit)="dodajOpony()">
+  Klient:<br>
+  <mat-form-field>
+    <mat-label>Nazwa</mat-label>
+    <input type="text" matInput name="Nazwa" id="Nazwa" [(ngModel)]="opony.Klient.Nazwa">
+  </mat-form-field>
+  <mat-form-field>
+    <mat-label>Nr_Klienta</mat-label>
+    <input type="number" matInput name="Nr_Klienta" id="Nr_Klienta" [(ngModel)]="opony.Klient.Nr_Klienta">
+  </mat-form-field><br />
+
+  Auto:<br />
+  <mat-form-field>
+    <mat-label>Nr Rejestracyjny</mat-label>
+    <input type="text" matInput name="Nr_rejestracyjny" id="Nr_rejestracyjny" [(ngModel)]="opony.Auto.Nr_rejestracyjny">
+  </mat-form-field>
+  <mat-form-field>
+    <mat-label>Nr Nadwozia</mat-label>
+    <input type="text" matInput name="Nr_nadwozia" id="Nr_nadwozia" [(ngModel)]="opony.Auto.Nr_nadwozia">
+  </mat-form-field>
+  <mat-form-field>
+    <mat-label>Marka</mat-label>
+    <input type="text" matInput name="Marka" id="Marka" [(ngModel)]="opony.Auto.Marka">
+  </mat-form-field>
+  <mat-form-field>
+    <mat-label>Model</mat-label>
+    <input type="text" matInput name="Model" id="Model" [(ngModel)]="opony.Auto.Model">
+  </mat-form-field><br />
+  Opony:<br />
+
+  <mat-form-field>
+    <mat-label>Marka</mat-label>
+    <input type="text" matInput name="Marka" id="Marka" [(ngModel)]="opony.Marka">
+  </mat-form-field>
+  <mat-form-field>
+    <mat-label>Model</mat-label>
+    <input type="text" matInput name="Model" id="Model" [(ngModel)]="opony.Model">
+  </mat-form-field>
+
+  <mat-form-field>
+    <mat-label>Sezon</mat-label>
+    <input type="text" matInput name="Sezon" id="Sezon" [(ngModel)]="opony.Sezon">
+  </mat-form-field>
+
+  <mat-form-field>
+    <mat-label>Felgi</mat-label>
+    <input type="text" matInput name="Felgi" id="Felgi" [(ngModel)]="opony.Felgi">
+  </mat-form-field>
+
+  <mat-form-field>
+    <mat-label>Ilość</mat-label>
+    <input type="text" matInput name="Felgi" id="Felgi" [(ngModel)]="opony.Ilosc">
+  </mat-form-field>
+
+  <mat-form-field>
+    <mat-label>DOT</mat-label>
+    <input type="text" matInput name="DOT" id="DOT" [(ngModel)]="opony.DOT">
+  </mat-form-field><br />
+
+  Bieżnik:<br />
+
+  <mat-form-field>
+    <mat-label>PL</mat-label>
+    <input type="text" matInput name="PL" id="PL" [(ngModel)]="opony.Bieznik.PL">
+  </mat-form-field>
+  <mat-form-field>
+    <mat-label>PP</mat-label>
+    <input type="text" matInput name="PP" id="PP" [(ngModel)]="opony.Bieznik.PP">
+  </mat-form-field>
+  <mat-form-field>
+    <mat-label>TL</mat-label>
+    <input type="text" matInput name="TL" id="TL" [(ngModel)]="opony.Bieznik.TL">
+  </mat-form-field>
+  <mat-form-field>
+    <mat-label>TP</mat-label>
+    <input type="text" matInput name="TP" id="TP" [(ngModel)]="opony.Bieznik.TP">
+  </mat-form-field> <br />
+
+  <mat-form-field>
+    <mat-label>Uwagi</mat-label>
+    <input type="text" matInput name="Uwagi" id="Uwagi" [(ngModel)]="opony.Uwagi">
+  </mat-form-field>
+
+  <br />
+  <button mat-fab extended color="primary" type="submit">
+    <mat-icon>add</mat-icon>
+     Dodaj Opony
+  </button>
+</form>

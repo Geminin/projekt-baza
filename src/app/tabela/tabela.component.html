@@ -1,45 +1,117 @@
-<div class="demo-button-container">
-  <button
-  mat-raised-button
-  class="demo-button"> Add data </button>
-  <button
-      mat-raised-button
+<mat-accordion>
+  <mat-expansion-panel hideToggle>
+    <mat-expansion-panel-header>
+      <mat-panel-title>
+        Dodaj Opony
+      </mat-panel-title>
+    </mat-expansion-panel-header>
+    <app-form></app-form>
+  </mat-expansion-panel> <br />
+
+<mat-form-field>
+  <mat-label>Filter</mat-label>
+  <input matInput (keyup)="applyFilter($event)" #input>
+</mat-form-field>
+
+<mat-form-field>
+  <mat-label>Wyszukiwanie Po:</mat-label>
+  <mat-select>
+    <mat-option value="vin">Vin</mat-option>
+    <mat-option value="nr_rejestracyjny">Nr_Rejestracyjny</mat-option>
+  </mat-select>
+</mat-form-field>
+
+<table mat-table [dataSource]="opony" class="mat-elevation-z8">
 
 
-      class="demo-button"> Remove data </button>
-</div>
+  <ng-container matColumnDef="id">
+    <th mat-header-cell *matHeaderCellDef> Id </th>
+    <td mat-cell *matCellDef="let auto"> {{auto.id}} </td>
+  </ng-container>
 
 
-  <table mat-table [dataSource]="auta" class="mat-elevation-z8">
-
-    <!--- Note that these columns can be defined in any order.
-          The actual rendered columns are set as a property on the row definition" -->
-
-    <!-- Position Column -->
-    <ng-container matColumnDef="id">
-      <th mat-header-cell *matHeaderCellDef> Id </th>
-      <td mat-cell *matCellDef="let auto"> {{auto.id}} </td>
-    </ng-container>
-
-    <!-- Name Column -->
-    <ng-container matColumnDef="model">
-      <th mat-header-cell *matHeaderCellDef> Model </th>
-      <td mat-cell *matCellDef="let auto"> {{auto.Model}} </td>
-    </ng-container>
-
-    <!-- Weight Column -->
-    <ng-container matColumnDef="marka">
-      <th mat-header-cell *matHeaderCellDef> Marka </th>
-      <td mat-cell *matCellDef="let auto"> {{auto.Marka}} </td>
-    </ng-container>
-
-    <ng-container matColumnDef="nr_nadwozia">
-      <th mat-header-cell *matHeaderCellDef> Nr_Nadwozia </th>
-      <td mat-cell *matCellDef="let auto"> {{auto.Auto}} </td>
-    </ng-container>
+  <ng-container matColumnDef="model">
+    <th mat-header-cell *matHeaderCellDef> Model </th>
+    <td mat-cell *matCellDef="let auto"> {{auto.Model}} </td>
+  </ng-container>
 
 
+  <ng-container matColumnDef="marka">
+    <th mat-header-cell *matHeaderCellDef> Marka </th>
+    <td mat-cell *matCellDef="let auto"> {{auto.Marka}} </td>
+  </ng-container>
 
-    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-  </table>
+  <ng-container matColumnDef="sezon">
+    <th mat-header-cell *matHeaderCellDef> Sezon </th>
+    <td mat-cell *matCellDef="let auto"> {{auto.Sezon}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="felgi">
+    <th mat-header-cell *matHeaderCellDef> Felgi </th>
+    <td mat-cell *matCellDef="let auto"> {{auto.Felgi}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="DOT">
+    <th mat-header-cell *matHeaderCellDef> DOT </th>
+    <td mat-cell *matCellDef="let auto"> {{auto.DOT}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="klient">
+    <th mat-header-cell *matHeaderCellDef> Klient </th>
+    <td mat-cell *matCellDef="let auto">
+      Nr_Kienta: {{auto.Klient.Nr_Klienta}}<br />
+      Nazwa: {{auto.Klient.Nazwa}}
+
+    </td>
+  </ng-container>
+
+  <ng-container matColumnDef="auto">
+    <th mat-header-cell *matHeaderCellDef> Auto </th>
+    <td mat-cell *matCellDef="let auto">
+      Nr_Rejestracyjny: {{auto.Auto.Nr_rejestracyjny}}<br />
+      Marka: {{auto.Auto.Marka}}<br />
+      Model: {{auto.Auto.Model}}<br />
+      NR_Nadwozia: {{auto.Auto.Nr_nadwozia}}
+    </td>
+  </ng-container>
+
+  <ng-container matColumnDef="ilosc">
+    <th mat-header-cell *matHeaderCellDef> Ilość </th>
+    <td mat-cell *matCellDef="let auto"> {{auto.Ilosc}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="bieznik">
+    <th mat-header-cell *matHeaderCellDef> Bieżnik </th>
+    <td mat-cell *matCellDef="let auto">
+      PL: {{auto.Bieznik.PL}}<br />
+      PP: {{auto.Bieznik.PP}}<br />
+      TL: {{auto.Bieznik.TL}}<br />
+      TP: {{auto.Bieznik.TP}}<br />
+    </td>
+  </ng-container>
+
+  <ng-container matColumnDef="uwagi">
+    <th mat-header-cell *matHeaderCellDef> Uwagi </th>
+    <td mat-cell *matCellDef="let auto">
+      {{auto.Uwagi}}
+    </td>
+  </ng-container>
+
+
+
+  <ng-container matColumnDef="akcja">
+    <th mat-header-cell *matHeaderCellDef> Akcja </th>
+    <td mat-cell *matCellDef="let auto">
+
+
+      <button mat-raised-button class="demo-button" (click)="deleteOpony(auto.id)">Wydaj Opony</button>
+
+    </td>
+  </ng-container>
+
+
+
+
+  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+  <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+</table>
