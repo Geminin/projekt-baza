@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { SharedService } from '../shared.service';
 
 import { FormsModule } from '@angular/forms';
@@ -7,6 +7,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatButtonModule } from '@angular/material/button';
 import {MatIconModule} from '@angular/material/icon';
 import { Pracownik } from './pracownik.model';
+import { Auth } from '@angular/fire/auth';
 
 @Component({
   selector: 'app-login',
@@ -23,20 +24,12 @@ import { Pracownik } from './pracownik.model';
 })
 export class LoginComponent {
 
-  constructor(private service: SharedService) { }
-
-  pracownik: Pracownik ={
-    Login: '',
-    Haslo: '',
-  }
-
+  private auth: Auth = inject(Auth);
   hide = true;
+  login() {
 
-  Login(): void{
-    this.service.login(this.pracownik.Login,this.pracownik.Haslo).then((res) => {
-      console.log(res);
-    });
-    }
+
+  }
 
   }
 
