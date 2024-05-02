@@ -1,35 +1,35 @@
-import { Component, inject } from '@angular/core';
-import { SharedService } from '../shared.service';
-
-import { FormsModule } from '@angular/forms';
-import { MatInputModule } from '@angular/material/input';
-import { MatFormFieldModule } from '@angular/material/form-field';
-import { MatButtonModule } from '@angular/material/button';
-import {MatIconModule} from '@angular/material/icon';
-import { Pracownik } from './pracownik.model';
-import { Auth } from '@angular/fire/auth';
+import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { AuthService } from './auth.service';
 
 @Component({
-  selector: 'app-login',
   standalone: true,
-  imports: [
-    FormsModule,
-    MatFormFieldModule,
-    MatInputModule,
-    MatButtonModule,
-    MatIconModule,
-  ],
+  selector: 'app-login',
   templateUrl: './login.component.html',
-  styleUrl: './login.component.css'
+  styleUrls: ['./login.component.css']
 })
-export class LoginComponent {
+export class LoginComponent implements OnInit {
 
-  private auth: Auth = inject(Auth);
-  hide = true;
-  login() {
+  loginForm!: FormGroup; // Zadeklarowano loginForm jako !FormGroup
 
+  model: any = {};
 
+  constructor(public authService: AuthService, private formBuilder: FormBuilder) { }
+
+  ngOnInit() {
+    this.buildForm();
   }
 
+  buildForm() {
+    this.loginForm = this.formBuilder.group({
+      email: ['', [Validators.required, Validators.email]],
+      password: ['', [Validators.required]]
+    });
   }
 
+  onLogin() {
+    const email = this.loginForm.get('email')!.value;
+    const password = this.loginForm.get('password')!.value;
+    this.authService.SignIn(email, password);
+  }
+}

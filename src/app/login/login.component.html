@@ -1,23 +1,30 @@
-<h1>Logowanie</h1>
+<div class="row">
+  <div class="col-md-4 offset-md-4">
+    <div class="guest-form-card card">
 
-<form >
+      <div class="card-header text-center">
+        <h2>Zaloguj się</h2>
+      </div>
 
-<mat-form-field>
-  <mat-label>Login</mat-label>
-  <input type="text" matInput name="Nazwa" id="Nazwa" >
-</mat-form-field><br />
+      <div class="card-body">
+        <form [formGroup]="loginForm">
+          <div class="form-group">
+            <label for="username">Email</label>
+            <input id="username" class="form-control" formControlName="email" form  name="username"/>       
+          </div>
 
-<mat-form-field>
-  <mat-label>Hasło</mat-label>
-  <input matInput [type]="hide ? 'password' : 'text'" type="text" matInput name="Nazwa" id="Nazwa">
-  <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
-    <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
-  </button>
-</mat-form-field><br />
+          <div class="form-group">
+            <label for="password">Hasło</label>
+            <input type="password" id="password" name="password" formControlName="password" class="form-control"/>
+          </div>
 
-<button type="submit" mat-raised-button class="demo-button" >
-  Zaloguj
-  <mat-icon>login</mat-icon>
-</button>
+          <div class="form-group">
+            <input type="checkbox" id="remember" name="remember" >
+            <label class="ml-1" for="remember">Zapamiętaj</label>
+          </div>
 
-</form>
+          <button class="btn btn-primary btn-block" [disabled]="loginForm.invalid" (click)="onLogin()">Zaloguj się</button>
+        </form>
+      </div>
+    </div>
+  </div>
