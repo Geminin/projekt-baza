@@ -1,4 +1,5 @@
 import { Injectable, Query } from '@angular/core';
+import { AngularFirestore } from '@angular/fire/compat/firestore';
 import { Firestore, addDoc, collection, collectionData, deleteDoc, doc,query,where,getDocs } from '@angular/fire/firestore';
 import { Data } from '@angular/router';
 
@@ -10,12 +11,12 @@ import { Data } from '@angular/router';
 
 export class SharedService {
 
-  constructor(private fs:Firestore) { }
+  constructor(private fs:AngularFirestore) { }
 
 
   getOpony(){
 
-    let oponyCollection = collection(this.fs,'Opony');
+    let oponyCollection = collection(this.fs.firestore,'Opony');
     return collectionData(oponyCollection,{idField:'id'});
   }
 
@@ -23,13 +24,13 @@ export class SharedService {
   addOpony(desc:Data){
 
     let data = desc;
-    let oponyCollection = collection(this.fs, 'Opony');
+    let oponyCollection = collection(this.fs.firestore, 'Opony');
     return addDoc(oponyCollection,data);
   }
 
   deleteOpony(id:string){
 
-    let docRef = doc(this.fs,'Opony/'+id);
+    let docRef = doc(this.fs.firestore,'Opony/'+id);
     return deleteDoc(docRef);
 
   }
@@ -37,7 +38,7 @@ export class SharedService {
 
   async login(login: string, haslo: string): Promise<void> {
     try {
-      const pracownicyRef = collection(this.fs, 'Pracownicy');
+      const pracownicyRef = collection(this.fs.firestore, 'Pracownicy');
       const userQuery = query(pracownicyRef, where('Login', '==', login), where('Haslo', '==', haslo));
       const userSnapshot = await getDocs(userQuery);
 

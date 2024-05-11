@@ -12,6 +12,9 @@ import { SortComponent } from './sort/sort.component';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatIconModule } from '@angular/material/icon';
 import { LoginComponent } from './login/login.component';
+import { AngularFireModule } from '@angular/fire/compat';
+import { AngularFireAuthModule } from '@angular/fire/compat/auth';
+import { AngularFirestoreModule } from '@angular/fire/compat/firestore';
 
 
 
@@ -35,9 +38,13 @@ const firebaseConfig = {
   ],
   imports: [
     BrowserModule,
-    provideFirebaseApp(() => initializeApp(firebaseConfig)),
-    provideFirestore(() => getFirestore()),
-    provideAuth(() => getAuth()),
+    AngularFireModule.initializeApp(firebaseConfig),
+    AngularFirestoreModule,
+   // AngularFireDatabaseModule,
+    AngularFireAuthModule,
+    // provideFirebaseApp(() => initializeApp(firebaseConfig)),
+    // provideFirestore(() => getFirestore()),
+    // provideAuth(() => getAuth()),
     BrowserAnimationsModule,
     SortComponent,
     MatIconModule,
