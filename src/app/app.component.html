@@ -1,8 +1,16 @@
 <mat-toolbar color="primary">
+<div>
   <mat-icon>local_fire_department</mat-icon>
   <span>Opony</span>
+</div>
+  <div *ngIf="checkLogin()" class="container">
+    <button mat-flat-button color="accent" class="button" aria-label="Example icon button with a delete icon" (click)="logOut()">
+      Logout<mat-icon>logout</mat-icon>
+    </button>
+  </div>
 </mat-toolbar>
-<app-sort></app-sort>
+
+<router-outlet></router-outlet>
 
 
 

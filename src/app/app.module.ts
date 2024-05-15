@@ -1,12 +1,12 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { AppComponent } from './app.component';
-import { initializeApp, provideFirebaseApp, getApp } from '@angular/fire/app';
-import { getFirestore, provideFirestore } from '@angular/fire/firestore';
-import { getAuth, provideAuth } from '@angular/fire/auth';
+// import { initializeApp, provideFirebaseApp, getApp } from '@angular/fire/app';
+// import { getFirestore, provideFirestore } from '@angular/fire/firestore';
+// import { getAuth, provideAuth } from '@angular/fire/auth';
 import { SharedService } from './shared.service';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-
+import { AppRoutingModule } from './app.routes';
 import { FormComponent } from './form/form.component';
 import { SortComponent } from './sort/sort.component';
 import { MatToolbarModule } from '@angular/material/toolbar';
@@ -15,6 +15,7 @@ import { LoginComponent } from './login/login.component';
 import { AngularFireModule } from '@angular/fire/compat';
 import { AngularFireAuthModule } from '@angular/fire/compat/auth';
 import { AngularFirestoreModule } from '@angular/fire/compat/firestore';
+import { MatButtonModule } from '@angular/material/button';
 
 
 
@@ -50,7 +51,9 @@ const firebaseConfig = {
     MatIconModule,
     MatToolbarModule,
     FormComponent,
-    LoginComponent
+    LoginComponent,
+    AppRoutingModule,
+    MatButtonModule,
 
 
   ],

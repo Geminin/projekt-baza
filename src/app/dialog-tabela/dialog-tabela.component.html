@@ -1,0 +1,19 @@
+<h2>Edycja rekordu</h2>
+
+<form #editForm="ngForm" (ngSubmit)="onSaveClick()">
+  <div>
+    <label for="felgi">Felgi:</label>
+    <input type="text" id="felgi" name="felgi" required>
+  </div>
+  <div>
+    <label for="sezon">Sezon:</label>
+    <input type="text" id="sezon" name="sezon"  required>
+  </div>
+  <div>
+    <label for="model">Model:</label>
+    <input type="text" id="model" name="model"  required>
+  </div>
+
+  <button type="submit">Zapisz</button>
+  <button type="button" (click)="onCancelClick()">Anuluj</button>
+</form>

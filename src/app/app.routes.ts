@@ -1,10 +1,12 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { FormComponent } from './form/form.component';
+import { SortComponent } from './sort/sort.component';
+import { LoginComponent } from './login/login.component';
 
 const routes: Routes = [
 
-  { path: 'strona', component: FormComponent },
+  { path: '', component: LoginComponent },
+  {path:'Opony', component: SortComponent},
 
 ];
 

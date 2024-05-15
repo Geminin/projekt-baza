@@ -1,0 +1,13 @@
+.button {
+  display: flex;
+  justify-content: center; /* Wyśrodkowanie tekstu horyzontalnie */
+  align-items: center; /* Wyśrodkowanie tekstu wertykalnie */
+  height: 40px;
+  width: 120px;
+}
+
+.mat-toolbar {
+  display: flex;
+  justify-content: space-between; /* Rozłożenie elementów po obu stronach */
+  align-items: center; /* Wyśrodkowanie wertykalne */
+}

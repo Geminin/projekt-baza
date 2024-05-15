@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { AuthService } from './auth.service';
 import { ReactiveFormsModule } from '@angular/forms';
+import { MatIconModule } from '@angular/material/icon';
+import { MatButtonModule } from '@angular/material/button';
 
 @Component({
   standalone: true,
@@ -10,6 +12,8 @@ import { ReactiveFormsModule } from '@angular/forms';
   styleUrls: ['./login.component.css'],
   imports: [
     ReactiveFormsModule,
+    MatIconModule,
+    MatButtonModule
   ]
 })
 export class LoginComponent implements OnInit {

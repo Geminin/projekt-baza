@@ -89,11 +89,32 @@
       TP: {{auto.Bieznik.TP}}<br />
     </td>
   </ng-container>
+  <ng-container matColumnDef="lokalizacja">
+    <th mat-header-cell *matHeaderCellDef> Lokalizacja </th>
+    <td mat-cell *matCellDef="let auto">
+      {{auto.Lokalizacja.Regal}}-{{auto.Lokalizacja.Czesc}}
+
+    </td>
+  </ng-container>
 
   <ng-container matColumnDef="uwagi">
     <th mat-header-cell *matHeaderCellDef> Uwagi </th>
     <td mat-cell *matCellDef="let auto">
       {{auto.Uwagi}}
+    </td>
+  </ng-container>
+
+  <ng-container matColumnDef="status">
+    <th mat-header-cell *matHeaderCellDef> Status </th>
+    <td mat-cell *matCellDef="let auto">
+      {{auto.Status}}
+    </td>
+  </ng-container>
+
+  <ng-container matColumnDef="data">
+    <th mat-header-cell *matHeaderCellDef> Data </th>
+    <td mat-cell *matCellDef="let auto">
+      {{auto.Data}}
     </td>
   </ng-container>
 
@@ -105,7 +126,7 @@
 
 
       <button mat-raised-button class="demo-button" (click)="deleteOpony(auto.id)">Wydaj Opony</button>
-
+      <button mat-raised-button (click)="openDialog(auto.id)"><mat-icon>edit</mat-icon> Edycja</button>
     </td>
   </ng-container>
 

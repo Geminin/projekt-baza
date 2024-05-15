@@ -12,6 +12,8 @@ import { NgFor } from '@angular/common';
 import { Router } from '@angular/router';
 import {MatExpansionModule} from '@angular/material/expansion'
 import { FormComponent } from '../form/form.component';
+import {MatDialog, MatDialogModule} from '@angular/material/dialog';
+import { DialogTabelaComponent } from '../dialog-tabela/dialog-tabela.component';
 
 
 @Component({
@@ -28,6 +30,8 @@ import { FormComponent } from '../form/form.component';
     MatIconModule,
     MatExpansionModule,
     FormComponent,
+    MatDialogModule,
+    DialogTabelaComponent,
 
   ],
   templateUrl: './tabela.component.html',
@@ -37,10 +41,30 @@ import { FormComponent } from '../form/form.component';
 export class TabelaComponent {
   constructor(
     private service: SharedService,
-    private router: Router) { }
+    private router: Router,
+  public dialog: MatDialog) { }
 
-  displayedColumns: string[] = ['id', 'marka', 'model', 'sezon','felgi', 'DOT', 'klient', 'auto', 'ilosc', 'bieznik', 'uwagi', 'akcja',]
+
+  displayedColumns: string[] = ['id', 'marka', 'model', 'sezon','felgi', 'DOT',
+                                'klient', 'auto', 'ilosc', 'bieznik','lokalizacja',
+                                 'uwagi','status','data', 'akcja',]
   opony: any = [];
+
+  openDialog(id:any): void {
+    const dialogRef = this.dialog.open(DialogTabelaComponent, {
+      width: '50%',
+      data: id, // Przekazujemy dane rekordu do komponentu dialogowego
+     panelClass: 'dialog-frame' // Dodajemy klasę panelu dla ramki
+
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('The dialog was closed', result);
+      // Tutaj możesz wykonać logikę na podstawie wyniku z dialogu
+    });
+
+
+  }
 
 
   applyFilter(event: Event) {
@@ -67,4 +91,6 @@ export class TabelaComponent {
       this.refreshOpony();
     });
   }
+
+
 }
