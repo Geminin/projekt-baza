@@ -24,4 +24,11 @@ export interface Opony {
     TP: string;
   };
   Uwagi: string;
+  Lokalizacja: string;
+  Status:string;
+  Data: {
+    Dzien: string;
+    Miesiac: string;
+    Rok: string;
+  }
 }

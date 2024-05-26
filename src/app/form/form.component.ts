@@ -53,7 +53,14 @@ export class FormComponent {
       TL: '',
       TP: ''
     },
-    Uwagi: ''
+    Uwagi: '',
+    Lokalizacja: '',
+    Status: '',
+    Data: {
+      Dzien: '',
+      Miesiac:'',
+      Rok:''
+    }
   };
 
   dodajOpony(): void {

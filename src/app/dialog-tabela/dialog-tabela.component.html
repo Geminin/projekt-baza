@@ -3,7 +3,7 @@
 <form #editForm="ngForm" (ngSubmit)="onSaveClick()">
   <div>
     <label for="felgi">Felgi:</label>
-    <input type="text" id="felgi" name="felgi" required>
+    <input type="text" id="felgi" name="felgi"  [(ngModel)]="auto.felgi"required>
   </div>
   <div>
     <label for="sezon">Sezon:</label>

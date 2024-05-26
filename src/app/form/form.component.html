@@ -77,8 +77,33 @@
   </mat-form-field> <br />
 
   <mat-form-field>
+    <mat-label>Lokalizacja</mat-label>
+    <input type="text" matInput name="Lokalizcja" id="Lokalizacja" [(ngModel)]="opony.Lokalizacja">
+  </mat-form-field>
+
+  <mat-form-field>
     <mat-label>Uwagi</mat-label>
     <input type="text" matInput name="Uwagi" id="Uwagi" [(ngModel)]="opony.Uwagi">
+  </mat-form-field>
+
+  <mat-form-field>
+    <mat-label>Status</mat-label>
+    <input type="text" matInput name="Status" id="Status" [(ngModel)]="opony.Status">
+  </mat-form-field><br />
+
+
+  Data<br />
+  <mat-form-field>
+    <mat-label>Dzien</mat-label>
+    <input type="text" matInput name="Dzien" id="Dzien" [(ngModel)]="opony.Data.Dzien">
+  </mat-form-field>
+  <mat-form-field>
+    <mat-label>Miesiac</mat-label>
+    <input type="text" matInput name="Miesiac" id="Miesiac" [(ngModel)]="opony.Data.Miesiac">
+  </mat-form-field>
+  <mat-form-field>
+    <mat-label>Rok</mat-label>
+    <input type="text" matInput name="Rok" id="Rok" [(ngModel)]="opony.Data.Rok">
   </mat-form-field>
 
   <br />

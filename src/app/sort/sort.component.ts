@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 
 import { TabelaComponent } from '../tabela/tabela.component';
 import { MatTabsModule } from '@angular/material/tabs';
-import { RegalComponent } from '../regal/regal.component';
+import { StatComponent } from '../stat/stat.component';
 import { LoginComponent } from '../login/login.component';
 
 
@@ -13,7 +13,7 @@ import { LoginComponent } from '../login/login.component';
   standalone: true,
   imports: [
     TabelaComponent,
-    RegalComponent,
+    StatComponent,
     MatTabsModule,
     LoginComponent
   ]

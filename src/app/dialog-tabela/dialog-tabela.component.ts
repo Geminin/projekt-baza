@@ -16,11 +16,13 @@ import { FormsModule } from '@angular/forms';
   styleUrl: './dialog-tabela.component.css'
 })
 export class DialogTabelaComponent {
-
+  auto: any;
   constructor(
     public dialogRef: MatDialogRef<DialogTabelaComponent>,
     @Inject(MAT_DIALOG_DATA) public data: any
-  ) { }
+  ) {
+    this.auto = { data }
+  }
 
   onCancelClick(): void {
     this.dialogRef.close(); // Zamknięcie dialogu bez zapisywania zmian
