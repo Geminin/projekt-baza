@@ -8,18 +8,25 @@
     <app-form></app-form>
   </mat-expansion-panel> <br />
 
-<mat-form-field>
-  <mat-label>Filter</mat-label>
-  <input matInput (keyup)="applyFilter($event)" #input>
-</mat-form-field>
-
-<mat-form-field>
-  <mat-label>Wyszukiwanie Po:</mat-label>
-  <mat-select>
-    <mat-option value="vin">Vin</mat-option>
-    <mat-option value="nr_rejestracyjny">Nr_Rejestracyjny</mat-option>
-  </mat-select>
-</mat-form-field>
+  <div>
+    <label for="searchType">Szukaj według:</label>
+    <select id="searchType" [(ngModel)]="searchType">
+      <option value="Nr_nadwozia">Nr Nadwozia</option>
+      <option value="Nr_rejestracyjny">Nr Rejestracyjny</option>
+    </select>
+  </div>
+  <div>
+    <label for="searchInput">Wpisz dane:</label>
+    <input id="searchInput" type="text" [(ngModel)]="searchInput" (input)="onSearchInputChange($event)">
+  </div>
+  <div *ngIf="filteredAutos.length > 0">
+    <h3>Wyniki wyszukiwania:</h3>
+    <ul>
+      <li *ngFor="let auto of filteredAutos">
+        Nr Nadwozia: {{ auto.Nr_nadwozia }}, Nr Rejestracyjny: {{ auto.Nr_rejestracyjny }}
+      </li>
+    </ul>
+  </div>
 
 <table mat-table [dataSource]="opony" class="mat-elevation-z8">
 

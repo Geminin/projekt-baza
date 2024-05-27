@@ -14,6 +14,7 @@ import {MatExpansionModule} from '@angular/material/expansion'
 import { FormComponent } from '../form/form.component';
 import {MatDialog, MatDialogModule} from '@angular/material/dialog';
 import { DialogTabelaComponent } from '../dialog-tabela/dialog-tabela.component';
+import { NgIf } from '@angular/common';
 
 
 @Component({
@@ -31,7 +32,7 @@ import { DialogTabelaComponent } from '../dialog-tabela/dialog-tabela.component'
     MatExpansionModule,
     FormComponent,
     MatDialogModule,
-    DialogTabelaComponent,
+    NgIf
 
   ],
   templateUrl: './tabela.component.html',
@@ -50,11 +51,22 @@ export class TabelaComponent {
                                  'uwagi','status','data', 'akcja',]
   opony: any = [];
 
-  openDialog(id:any): void {
+  autos: any[] = [];
+  filteredAutos: any[] = [];
+  searchType: string = 'Nr_nadwozia';
+  searchInput: string = '';
+
+  ngOnInit() {
+    this.refreshOpony();
+  }
+
+  openDialog(id: string){
+
     const dialogRef = this.dialog.open(DialogTabelaComponent, {
       width: '50%',
       data: id, // Przekazujemy dane rekordu do komponentu dialogowego
      panelClass: 'dialog-frame' // Dodajemy klasę panelu dla ramki
+
 
     });
 
@@ -66,30 +78,35 @@ export class TabelaComponent {
 
   }
 
-
-  applyFilter(event: Event) {
-    const filterValue = (event.target as HTMLInputElement).value;
-    this.opony.filter = filterValue.trim().toLowerCase();
-  }
-
   refreshOpony() {
     this.service.getOpony().subscribe((res) => {
       this.opony = res
     });
   }
 
-  ngOnInit() {
-    this.refreshOpony();
-  }
-
-
-
-
   deleteOpony(id: string) {
     this.service.deleteOpony(id).then((res) => {
       console.log(res);
       this.refreshOpony();
     });
+  }
+
+
+  onSearchInputChange(event: any): void {
+    this.searchInput = event.target.value;
+    this.filterAutos();
+  }
+
+  filterAutos(): void {
+    if (!this.searchInput) {
+      this.filteredAutos = this.autos;
+    } else {
+      this.filteredAutos = this.autos.filter(auto => {
+        return this.searchType === 'Nr_nadwozia'
+          ? auto.Nr_nadwozia.includes(this.searchInput)
+          : auto.Nr_rejestracyjny.includes(this.searchInput);
+      });
+    }
   }
 
 

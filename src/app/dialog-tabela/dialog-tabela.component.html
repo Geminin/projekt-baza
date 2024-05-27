@@ -1,19 +1,115 @@
 <h2>Edycja rekordu</h2>
 
-<form #editForm="ngForm" (ngSubmit)="onSaveClick()">
-  <div>
-    <label for="felgi">Felgi:</label>
-    <input type="text" id="felgi" name="felgi"  [(ngModel)]="auto.felgi"required>
-  </div>
-  <div>
-    <label for="sezon">Sezon:</label>
-    <input type="text" id="sezon" name="sezon"  required>
-  </div>
-  <div>
-    <label for="model">Model:</label>
-    <input type="text" id="model" name="model"  required>
-  </div>
+<form >
+  Klient:<br>
+  <mat-form-field>
+    <mat-label>Nazwa</mat-label>
+    <input type="text" matInput name="Nazwa" id="Nazwa" >
+  </mat-form-field>
+  <mat-form-field>
+    <mat-label>Nr_Klienta</mat-label>
+    <input type="number" matInput name="Nr_Klienta" id="Nr_Klienta" >
+  </mat-form-field><br />
 
+  Auto:<br />
+  <mat-form-field>
+    <mat-label>Nr Rejestracyjny</mat-label>
+    <input type="text" matInput name="Nr_rejestracyjny" id="Nr_rejestracyjny" >
+  </mat-form-field>
+  <mat-form-field>
+    <mat-label>Nr Nadwozia</mat-label>
+    <input type="text" matInput name="Nr_nadwozia" id="Nr_nadwozia" >
+  </mat-form-field>
+  <mat-form-field>
+    <mat-label>Marka</mat-label>
+    <input type="text" matInput name="Marka" id="Marka" >
+  </mat-form-field>
+  <mat-form-field>
+    <mat-label>Model</mat-label>
+    <input type="text" matInput name="Model" id="Model" >
+  </mat-form-field><br />
+  auto:<br />
+
+  <mat-form-field>
+    <mat-label>Marka</mat-label>
+    <input type="text" matInput name="Marka" id="Marka" >
+  </mat-form-field>
+  <mat-form-field>
+    <mat-label>Model</mat-label>
+    <input type="text" matInput name="Model" id="Model" >
+  </mat-form-field>
+
+  <mat-form-field>
+    <mat-label>Sezon</mat-label>
+    <input type="text" matInput name="Sezon" id="Sezon" >
+  </mat-form-field>
+
+  <mat-form-field>
+    <mat-label>Felgi</mat-label>
+    <input type="text" matInput name="Felgi" id="Felgi" >
+  </mat-form-field>
+
+  <mat-form-field>
+    <mat-label>Ilość</mat-label>
+    <input type="text" matInput name="Ilosc" id="Ilosc" >
+  </mat-form-field>
+
+  <mat-form-field>
+    <mat-label>DOT</mat-label>
+    <input type="text" matInput name="DOT" id="DOT" >
+  </mat-form-field><br />
+
+  Bieżnik:<br />
+
+  <mat-form-field>
+    <mat-label>PL</mat-label>
+    <input type="text" matInput name="PL" id="PL" >
+  </mat-form-field>
+  <mat-form-field>
+    <mat-label>PP</mat-label>
+    <input type="text" matInput name="PP" id="PP" >
+  </mat-form-field>
+  <mat-form-field>
+    <mat-label>TL</mat-label>
+    <input type="text" matInput name="TL" id="TL" >
+  </mat-form-field>
+  <mat-form-field>
+    <mat-label>TP</mat-label>
+    <input type="text" matInput name="TP" id="TP" >
+  </mat-form-field> <br />
+
+  <mat-form-field>
+    <mat-label>Lokalizacja</mat-label>
+    <input type="text" matInput name="Lokalizcja" id="Lokalizacja" >
+  </mat-form-field>
+
+  <mat-form-field>
+    <mat-label>Uwagi</mat-label>
+    <input type="text" matInput name="Uwagi" id="Uwagi" >
+  </mat-form-field>
+
+  <mat-form-field>
+    <mat-label>Status</mat-label>
+    <input type="text" matInput name="Status" id="Status" >
+  </mat-form-field><br />
+
+
+  Data<br />
+  <mat-form-field>
+    <mat-label>Dzien</mat-label>
+    <input type="text" matInput name="Dzien" id="Dzien" >
+  </mat-form-field>
+  <mat-form-field>
+    <mat-label>Miesiac</mat-label>
+    <input type="text" matInput name="Miesiac" id="Miesiac" >
+  </mat-form-field>
+  <mat-form-field>
+    <mat-label>Rok</mat-label>
+    <input type="text" matInput name="Rok" id="Rok" >
+  </mat-form-field>
+
+  <br />
   <button type="submit">Zapisz</button>
-  <button type="button" (click)="onCancelClick()">Anuluj</button>
+  <button type="button">Anuluj</button>
 </form>
+

@@ -53,4 +53,7 @@ export class SharedService {
     }
   }
 
+  editOpony(documentId: string, newData: any) {
+    return this.fs.collection('your_collection').doc(documentId).update(newData);
+  }
 }
