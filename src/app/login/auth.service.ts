@@ -1,11 +1,6 @@
 import { Injectable, NgZone } from '@angular/core';
-import { User } from './User.model';
-import * as auth from 'firebase/auth';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
-import {
-  AngularFirestore,
-  AngularFirestoreDocument,
-} from '@angular/fire/compat/firestore';
+import {AngularFirestore} from '@angular/fire/compat/firestore';
 import { Router } from '@angular/router';
 @Injectable({
   providedIn: 'root',
@@ -31,6 +26,8 @@ export class AuthService {
       }
     });
   }
+
+
   // Sign in with email/password
   SignIn(email: string, password: string) {
     return this.afAuth
@@ -39,8 +36,7 @@ export class AuthService {
         this.ngZone.run(() => {
           this.router.navigate(['Opony']);
         });
-        this.SetAdmin(result.user);
-        //this.SetUserData(result.user);
+
       })
       .catch((error) => {
         window.alert(error.message);
@@ -55,38 +51,6 @@ export class AuthService {
   }
 
 
-  // Auth logic to run auth providers
-  AuthLogin(provider: any) {
-    return this.afAuth
-      .signInWithPopup(provider)
-      .then((result) => {
-        this.ngZone.run(() => {
-          this.router.navigate(['Opony']);
-        });
-        //this.SetUserData(result.user);
-      })
-      .catch((error) => {
-        window.alert(error);
-      });
-  }
-
-
-  SetAdmin(user: any){
-    this.afs.collection('users').doc(user.uid).ref.get().then((doc) => {
-      if (doc.exists) {
-        let dataa:any = doc.data();
-        localStorage.setItem('isAdmin', dataa.isAdmin)
-        localStorage.setItem('uid', doc.id)
-        localStorage.setItem('name', dataa.name)
-      } else {
-        console.log("There is no document!");
-      }
-    }).catch(function (error) {
-      console.log("There was an error getting your document:", error);
-    });
-
-
-  }
   // Sign out
   SignOut() {
     return this.afAuth.signOut().then(() => {

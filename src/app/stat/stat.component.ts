@@ -1,12 +1,17 @@
 import { Component, OnInit } from '@angular/core';
 import { SharedService } from '../shared.service';
-import { Timestamp } from 'firebase/firestore';
 import { NgFor } from '@angular/common';
+import { MatTableModule } from '@angular/material/table';
+
 
 @Component({
   selector: 'app-stat',
   standalone: true,
-  imports: [NgFor],
+  imports: [
+    NgFor,
+    MatTableModule,
+
+  ],
   templateUrl: './stat.component.html',
   styleUrl: './stat.component.css'
 })
@@ -15,7 +20,12 @@ export class StatComponent implements OnInit {
   opony: any[] = [];
   latoIlosc: number = 0;
   zimaIlosc: number = 0;
-  iloscMiesiac: { [key: string]: number } = {};
+  iloscMiesiac: number[] =[];
+  nazwyMiesiecy: string[] = [
+    'Styczeń', 'Luty', 'Marzec', 'Kwiecień', 'Maj', 'Czerwiec',
+    'Lipiec', 'Sierpień', 'Wrzesień', 'Październik', 'Listopad', 'Grudzień'
+  ];
+
 
 
   constructor(private service: SharedService) { }
@@ -34,42 +44,17 @@ export class StatComponent implements OnInit {
   }
 
 
-  PoliczMiesiac(){
-    const miesiace = [
-      'Styczeń', 'Luty', 'Marzec', 'Kwiecień', 'Maj', 'Czerwiec',
-      'Lipiec', 'Sierpień', 'Wrzesień', 'Październik', 'Listopad', 'Grudzień'
-    ];
-
-    this.iloscMiesiac = {};
+  PoliczMiesiac() {
+    this.iloscMiesiac = Array(12).fill(0);
 
     this.opony.forEach(record => {
-      const recordDATE = record.data;
-      const monthYear = '{$miesiace[recordDate.miesiac - 1]} ${recordDate.rok}';
-
-      if (!this.iloscMiesiac[monthYear]){
-        this.iloscMiesiac[monthYear] = 0;
-      }
-
-      this.iloscMiesiac[monthYear]++;
+        const month = parseInt(record.Data.Miesiac, 10) - 1; // Zamiana stringa na liczbę i przeliczenie na indeks tablicy | 10 oznacza system dziesiętny
+        if (month >= 0 && month < 12) {
+            this.iloscMiesiac[month]++;
+        }
     });
-  }
+}
 
-  getMonths(): string[] {
-    const miesiace = [
-      'Styczeń', 'Luty', 'Marzec', 'Kwiecień', 'Maj', 'Czerwiec',
-      'Lipiec', 'Sierpień', 'Wrzesień', 'Październik', 'Listopad', 'Grudzień'
-    ];
-
-    return Object.keys(this. iloscMiesiac).sort((a, b) => {
-      const [monthA, yearA] = a.split(' ');
-      const [monthB, yearB] = b.split(' ');
-
-      const dateA = new Date(Number(yearA), miesiace.indexOf(monthA));
-      const dateB = new Date(Number(yearB), miesiace.indexOf(monthB));
-
-      return dateA.getTime() - dateB.getTime();
-    });
-  }
 
   }
 

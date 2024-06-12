@@ -1,0 +1,67 @@
+
+<div>
+  <mat-form-field>
+    <mat-label>Nr_Rejestracyjny</mat-label>
+  <input matInput  [(ngModel)]="nrRejestracyjny">
+  </mat-form-field>
+  <button mat-flat-button color="primary" (click)="Szukajka()">Szukaj</button>
+</div>
+
+<div *ngIf="opony.length > 0">
+  <p>Total opony: {{ opony.length }}</p> <!-- Log: liczba wyników -->
+  <table>
+    <thead>
+      <tr>
+        <th>Marka</th>
+        <th>Model</th>
+        <th>Sezon</th>
+        <th>Ilosc</th>
+        <th>Felgi</th>
+        <th>DOT</th>
+        <th>Klient</th>
+        <th>Auto</th>
+        <th>Bieżnik</th>
+        <th>Uwagi</th>
+        <th>Lokalizacja</th>
+        <th>Status</th>
+        <th>Data</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let record of opony">
+        <td>{{ record.Marka }}</td>
+        <td>{{ record.Model }}</td>
+        <td>{{ record.Sezon }}</td>
+        <td>{{ record.Ilosc }}</td>
+        <td>{{ record.Felgi }}</td>
+        <td>{{ record.DOT }}</td>
+        <td>{{record.Klient.Nazwa}}</td>
+        <td>
+          Nr_rejestracyjny: {{record.Auto.Nr_rejestracyjny}}<br />
+          Nr_nadwozia: {{record.Auto.Nr_nadwozia}}<br />
+          Marka: {{record.Auto.Marka}}<br />
+          Model: {{record.Auto.Model}}
+        </td>
+        <td>
+         PL: {{ record.Bieznik.PL }}<br />
+         PP: {{ record.Bieznik.PP }}<br />
+         TL: {{ record.Bieznik.TL }}<br />
+         TP: {{ record.Bieznik.TP }}
+        </td>
+
+
+        <td>{{ record.Uwagi }}</td>
+        <td>{{ record.Lokalizacja }}</td>
+        <td>{{ record.Status }}</td>
+        <td>{{ record.Data.Dzien }}/{{ record.Data.Miesiac }}/{{ record.Data.Rok }}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<div *ngIf="opony.length === 0">
+  <p>Brak wyników do wyświetlenia</p>
+</div>
+
+
+

@@ -1,21 +1,37 @@
-<div>
-  <p>Liczba opon letnich: {{ latoIlosc }}</p>
-  <p>Liczba opon zimowych: {{ zimaIlosc }}</p>
-</div>
 
 <div>
+<h1>Ilość Opon Lato/Zima</h1>
+<table>
+  <thead>
+    <th>Sezon</th>
+    <th>Ilość</th>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Lato</td>
+      <td>{{ latoIlosc }}</td>
+    </tr>
+    <tr>
+      <td>Zima</td>
+      <td>{{ zimaIlosc }}</td>
+    </tr>
+  </tbody>
+</table>
+</div><br />
 
+<div>
+  <h2>Ilość opon w każdym miesiącu</h2>
   <table>
     <thead>
       <tr>
         <th>Miesiąc</th>
-        <th>Liczba opon</th>
+        <th>Ilość</th>
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor="let month of getMonths()">
-        <td>{{ month }}</td>
-        <td>{{ iloscMiesiac[month] }}</td>
+      <tr *ngFor="let ilosc of iloscMiesiac; let i = index">
+        <td>{{ nazwyMiesiecy[i] }}</td>
+        <td>{{ ilosc }}</td>
       </tr>
     </tbody>
   </table>
